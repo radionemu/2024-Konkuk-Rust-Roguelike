@@ -19,6 +19,18 @@ fn do_things(logger: &impl Logger) {
 }
 
 // TODO: Define and implement `VerbosityFilter`.
+struct VerbosityFilter{
+    max_verbosity : u8,
+    inner : StderrLogger,
+}
+
+impl Logger for VerbosityFilter{
+    fn log(&self, verbosity: u8, message: impl Display){
+        for _i in 0..self.max_verbosity{
+            self.inner.log(verbosity, &message);
+        }
+    }
+}
 
 #[cfg(test)]
 mod tests {
