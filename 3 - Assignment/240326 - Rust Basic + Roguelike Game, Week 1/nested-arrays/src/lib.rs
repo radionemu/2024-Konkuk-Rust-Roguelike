@@ -1,5 +1,12 @@
 pub fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
-    todo!("Implement this")
+    let mut tmat: [[i32; 3]; 3] = [[1,0,0],[0,1,0],[0,0,1]];
+    for i in 0..3 {
+        for j in i..3{
+            tmat[i][j] = matrix[j][i];
+            tmat[j][i] = matrix[i][j];
+        }
+    }
+    tmat
 }
 
 #[cfg(test)]
